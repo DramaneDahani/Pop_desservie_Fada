@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Est_BF_0.js"></script>
+        <script src="data/Commune_Fadaadm_commune_1.js"></script>
+        <script src="data/Eau_surface_Fada_2.js"></script>
+        <script src="data/Cours_eau_Fada_3.js"></script>
+        <script src="data/Route_FadaRoutes_4.js"></script>
+        <script src="data/Villages_Administratifs_FadaVillages_Adminis_fada_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[11.735679242027436,0.12736712330754563],[12.230649616327673,0.7822227299003102]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Est_BF_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERIMETER'] !== null ? autolinker.link(feature.properties['PERIMETER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOMDEP'] !== null ? autolinker.link(feature.properties['NOMDEP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROV'] !== null ? autolinker.link(feature.properties['PROV'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_REG'] !== null ? autolinker.link(feature.properties['NOM_REG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Est_BF_0_0() {
+            return {
+                pane: 'pane_Est_BF_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(41,159,237,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Est_BF_0');
+        map.getPane('pane_Est_BF_0').style.zIndex = 400;
+        map.getPane('pane_Est_BF_0').style['mix-blend-mode'] = 'normal';
+        var layer_Est_BF_0 = new L.geoJson(json_Est_BF_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Est_BF_0',
+            layerName: 'layer_Est_BF_0',
+            pane: 'pane_Est_BF_0',
+            onEachFeature: pop_Est_BF_0,
+            style: style_Est_BF_0_0,
+        });
+        bounds_group.addLayer(layer_Est_BF_0);
+        map.addLayer(layer_Est_BF_0);
+        function pop_Commune_Fadaadm_commune_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Area'] !== null ? autolinker.link(feature.properties['SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Commune_Fadaadm_commune_1_0() {
+            return {
+                pane: 'pane_Commune_Fadaadm_commune_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(41,159,237,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Commune_Fadaadm_commune_1');
+        map.getPane('pane_Commune_Fadaadm_commune_1').style.zIndex = 401;
+        map.getPane('pane_Commune_Fadaadm_commune_1').style['mix-blend-mode'] = 'normal';
+        var layer_Commune_Fadaadm_commune_1 = new L.geoJson(json_Commune_Fadaadm_commune_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Commune_Fadaadm_commune_1',
+            layerName: 'layer_Commune_Fadaadm_commune_1',
+            pane: 'pane_Commune_Fadaadm_commune_1',
+            onEachFeature: pop_Commune_Fadaadm_commune_1,
+            style: style_Commune_Fadaadm_commune_1_0,
+        });
+        bounds_group.addLayer(layer_Commune_Fadaadm_commune_1);
+        map.addLayer(layer_Commune_Fadaadm_commune_1);
+        function pop_Eau_surface_Fada_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Regime'] !== null ? autolinker.link(feature.properties['Regime'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Type'] !== null ? autolinker.link(feature.properties['Type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Area'] !== null ? autolinker.link(feature.properties['SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Eau_surface_Fada_2_0() {
+            return {
+                pane: 'pane_Eau_surface_Fada_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(41,159,237,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Eau_surface_Fada_2');
+        map.getPane('pane_Eau_surface_Fada_2').style.zIndex = 402;
+        map.getPane('pane_Eau_surface_Fada_2').style['mix-blend-mode'] = 'normal';
+        var layer_Eau_surface_Fada_2 = new L.geoJson(json_Eau_surface_Fada_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Eau_surface_Fada_2',
+            layerName: 'layer_Eau_surface_Fada_2',
+            pane: 'pane_Eau_surface_Fada_2',
+            onEachFeature: pop_Eau_surface_Fada_2,
+            style: style_Eau_surface_Fada_2_0,
+        });
+        bounds_group.addLayer(layer_Eau_surface_Fada_2);
+        map.addLayer(layer_Eau_surface_Fada_2);
+        function pop_Cours_eau_Fada_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Regime'] !== null ? autolinker.link(feature.properties['Regime'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Type'] !== null ? autolinker.link(feature.properties['Type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Cours_eau_Fada_3_0() {
+            return {
+                pane: 'pane_Cours_eau_Fada_3',
+                opacity: 1,
+                color: 'rgba(41,159,237,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Cours_eau_Fada_3');
+        map.getPane('pane_Cours_eau_Fada_3').style.zIndex = 403;
+        map.getPane('pane_Cours_eau_Fada_3').style['mix-blend-mode'] = 'normal';
+        var layer_Cours_eau_Fada_3 = new L.geoJson(json_Cours_eau_Fada_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Cours_eau_Fada_3',
+            layerName: 'layer_Cours_eau_Fada_3',
+            pane: 'pane_Cours_eau_Fada_3',
+            onEachFeature: pop_Cours_eau_Fada_3,
+            style: style_Cours_eau_Fada_3_0,
+        });
+        bounds_group.addLayer(layer_Cours_eau_Fada_3);
+        map.addLayer(layer_Cours_eau_Fada_3);
+        function pop_Route_FadaRoutes_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cl_admin'] !== null ? autolinker.link(feature.properties['Cl_admin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Revetement'] !== null ? autolinker.link(feature.properties['Revetement'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Niveau'] !== null ? autolinker.link(feature.properties['Niveau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Praticab'] !== null ? autolinker.link(feature.properties['Praticab'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nb_chausse'] !== null ? autolinker.link(feature.properties['Nb_chausse'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Route_FadaRoutes_4_0() {
+            return {
+                pane: 'pane_Route_FadaRoutes_4',
+                opacity: 1,
+                color: 'rgba(215,101,103,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Route_FadaRoutes_4');
+        map.getPane('pane_Route_FadaRoutes_4').style.zIndex = 404;
+        map.getPane('pane_Route_FadaRoutes_4').style['mix-blend-mode'] = 'normal';
+        var layer_Route_FadaRoutes_4 = new L.geoJson(json_Route_FadaRoutes_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Route_FadaRoutes_4',
+            layerName: 'layer_Route_FadaRoutes_4',
+            pane: 'pane_Route_FadaRoutes_4',
+            onEachFeature: pop_Route_FadaRoutes_4,
+            style: style_Route_FadaRoutes_4_0,
+        });
+        bounds_group.addLayer(layer_Route_FadaRoutes_4);
+        map.addLayer(layer_Route_FadaRoutes_4);
+        function pop_Villages_Administratifs_FadaVillages_Adminis_fada_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Statut'] !== null ? autolinker.link(feature.properties['Statut'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLcommune'] !== null ? autolinker.link(feature.properties['CLcommune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLprovince'] !== null ? autolinker.link(feature.properties['CLprovince'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLregion'] !== null ? autolinker.link(feature.properties['CLregion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQposte'] !== null ? autolinker.link(feature.properties['EQposte'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQecole'] !== null ? autolinker.link(feature.properties['EQecole'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQgendarme'] !== null ? autolinker.link(feature.properties['EQgendarme'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQpolice'] !== null ? autolinker.link(feature.properties['EQpolice'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQdouane'] !== null ? autolinker.link(feature.properties['EQdouane'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQcontrole'] !== null ? autolinker.link(feature.properties['EQcontrole'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQhopital'] !== null ? autolinker.link(feature.properties['EQhopital'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQsanitair'] !== null ? autolinker.link(feature.properties['EQsanitair'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQAnimiste'] !== null ? autolinker.link(feature.properties['EQAnimiste'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQChretien'] !== null ? autolinker.link(feature.properties['EQChretien'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQMusulman'] !== null ? autolinker.link(feature.properties['EQMusulman'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQLCAn'] !== null ? autolinker.link(feature.properties['EQLCAn'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQLCCh'] !== null ? autolinker.link(feature.properties['EQLCCh'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQLCMu'] !== null ? autolinker.link(feature.properties['EQLCMu'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Marche'] !== null ? autolinker.link(feature.properties['Marche'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Code_ADM'] !== null ? autolinker.link(feature.properties['Code_ADM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Code_GEO'] !== null ? autolinker.link(feature.properties['Code_GEO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom_admin'] !== null ? autolinker.link(feature.properties['Nom_admin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Villages_Administratifs_FadaVillages_Adminis_fada_5_0() {
+            return {
+                pane: 'pane_Villages_Administratifs_FadaVillages_Adminis_fada_5',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(95,19,225,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Villages_Administratifs_FadaVillages_Adminis_fada_5');
+        map.getPane('pane_Villages_Administratifs_FadaVillages_Adminis_fada_5').style.zIndex = 405;
+        map.getPane('pane_Villages_Administratifs_FadaVillages_Adminis_fada_5').style['mix-blend-mode'] = 'normal';
+        var layer_Villages_Administratifs_FadaVillages_Adminis_fada_5 = new L.geoJson(json_Villages_Administratifs_FadaVillages_Adminis_fada_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Villages_Administratifs_FadaVillages_Adminis_fada_5',
+            layerName: 'layer_Villages_Administratifs_FadaVillages_Adminis_fada_5',
+            pane: 'pane_Villages_Administratifs_FadaVillages_Adminis_fada_5',
+            onEachFeature: pop_Villages_Administratifs_FadaVillages_Adminis_fada_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Villages_Administratifs_FadaVillages_Adminis_fada_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Villages_Administratifs_FadaVillages_Adminis_fada_5);
+        map.addLayer(layer_Villages_Administratifs_FadaVillages_Adminis_fada_5);
+        setBounds();
+        var i = 0;
+        layer_Est_BF_0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NOMDEP'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['NOMDEP']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Est_BF_0'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Villages_Administratifs_FadaVillages_Adminis_fada_5.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nom'] !== null?String('<div style="color: #323232; font-size: 9pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Villages_Administratifs_FadaVillages_Adminis_fada_5'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Est_BF_0,layer_Villages_Administratifs_FadaVillages_Adminis_fada_5]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Est_BF_0,layer_Villages_Administratifs_FadaVillages_Adminis_fada_5]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Est_BF_0,layer_Villages_Administratifs_FadaVillages_Adminis_fada_5]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Est_BF_0,layer_Villages_Administratifs_FadaVillages_Adminis_fada_5]);
+        });
+        </script>
+    </body>
+</html>
